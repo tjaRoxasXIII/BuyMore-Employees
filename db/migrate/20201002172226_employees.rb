@@ -5,7 +5,7 @@ class Employees < ActiveRecord::Migration
       t.string :last_name
       t.string :job_title
       t.date :birthdate
-      t.string :username
+      t.string :email
       t.string :password_digest
       t.integer :store_id
     end

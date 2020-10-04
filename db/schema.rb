@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(version: 20201002172233) do
     t.string  "last_name"
     t.string  "job_title"
     t.date    "birthdate"
-    t.string  "username"
+    t.string  "email"
     t.string  "password_digest"
     t.integer "store_id"
   end
