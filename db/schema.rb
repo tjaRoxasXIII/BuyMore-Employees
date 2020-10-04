@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20201002172233) do
+ActiveRecord::Schema.define(version: 20201004010715) do
 
   create_table "Employees", force: :cascade do |t|
     t.string  "first_name"
@@ -26,6 +26,13 @@ ActiveRecord::Schema.define(version: 20201002172233) do
   create_table "Stores", force: :cascade do |t|
     t.string "location"
     t.string "address"
+  end
+
+  create_table "Updates", force: :cascade do |t|
+    t.string   "content"
+    t.integer  "employee_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
 end
