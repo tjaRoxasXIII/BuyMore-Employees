@@ -20,4 +20,14 @@ class ApplicationController < Sinatra::Base
     
   end
 
+  post '/login' do
+    @employee = Employee.find_by(params[:email])
+    if @employee && @employee.authenticate(params["employee"][:password])
+      erb :home
+    else
+      erb :login_error
+    end
+    
+  end
+
 end
