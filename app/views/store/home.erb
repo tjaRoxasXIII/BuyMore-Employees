@@ -1,0 +1,12 @@
+<h1><%= DateTime.now.strftime("%B %d, %Y") %></h1>
+<h2>
+    <th>Home</th>
+    <th>Store Info</th>
+    <th>Profile</th>
+</h2>
+<% Update.all.each do |post|%>
+    <div>
+        <h5><%=post.employee.first_name%> <%=post.employee.last_name%>:</h5>
+        <p><%= post.content%></p>
+    </div>
+<%end%>
