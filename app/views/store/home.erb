@@ -1,12 +1,15 @@
-<h1><%= DateTime.now.strftime("%B %d, %Y") %></h1>
-<h2>
-    <th>Home</th>
-    <th>Store Info</th>
-    <th>Profile</th>
-</h2>
+<th><a style="float:right; padding:15px" href="#">Log Out</a></th>
+<th><a style="float:right; padding:15px" href="#">Store Info</a></th>
+<th><a style="float:right; padding:15px" href="#">Profile</a></th>
+<th><a style="float:right; padding:15px" href="#">Home</a></th>
+
+<h2><%= DateTime.now.strftime("%B %d, %Y") %></h2>
+
 <% Update.all.each do |post|%>
     <div>
-        <h5><%=post.employee.first_name%> <%=post.employee.last_name%>:</h5>
-        <p><%= post.content%></p>
+        <h4><%=post.employee.first_name%> <%=post.employee.last_name%>:</h4>
+        <h5><%= post.content%></h5>
+        <h6><%= post.created_at.strftime("%m-%d-%Y  %l:%M %p") %></h6>
+        <br>
     </div>
 <%end%>
