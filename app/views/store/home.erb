@@ -1,15 +1,22 @@
 <th><a style="float:right; padding:15px" href="#">Log Out</a></th>
-<th><a style="float:right; padding:15px" href="#">Store Info</a></th>
+<th><a style="float:right; padding:15px" href="/store/info">Store Info</a></th>
 <th><a style="float:right; padding:15px" href="#">Profile</a></th>
 <th><a style="float:right; padding:15px" href="#">Home</a></th>
 
 <h2><%= DateTime.now.strftime("%B %d, %Y") %></h2>
 
-<% Update.all.each do |post|%>
+<h3>Have something to say? Post an update:</h3>
+<form method="POST" action="/updates/new">
+<textarea name="content" rows="2" cols="50"></textarea>
+<input type="submit" value="Post">
+</form>
+
+
+<% Update.all.reverse.each do |post|%>
     <div>
         <h4><%=post.employee.first_name%> <%=post.employee.last_name%>:</h4>
-        <h5><%= post.content%></h5>
-        <h6><%= post.created_at.strftime("%m-%d-%Y  %l:%M %p") %></h6>
+        <h5 style="background-color:lightblue; display: block"><%= post.content%></h5>
+        <h6 style="background-color:lightblue; display: block"><%= post.created_at.strftime("%m-%d-%Y  %l:%M %p") %></h6>
         <br>
     </div>
 <%end%>

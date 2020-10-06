@@ -1,0 +1,12 @@
+<% Store.all.each do |store|%>
+    <h2><%= store.location%></h2>
+    <h3> Address: <%= store.address%></h3>
+    <br>
+    <h4>Store Team Members:</h4>
+        <% store.employees.each do |employee|%>
+        <ul>
+            <li><%= employee.full_name%></li>
+        </ul>
+        <%end%>
+        <br>
+<% end %>

@@ -34,6 +34,7 @@ class ApplicationController < Sinatra::Base
     # binding.pry
     @employee = Employee.find_by(email: params[:email])
     if @employee && @employee.authenticate(params[:password])
+      session[:id] = @employee.id
       redirect "/home"
     else
       erb :login_error
@@ -45,4 +46,15 @@ class ApplicationController < Sinatra::Base
     erb :"store/home"
   end
 
+  get '/store/info' do 
+    erb :"store/info"
+  end
+
+  post '/updates/new' do
+    binding.pry
+    @update = Update.new(content: params[:content])
+    @update.employee_id = session[:id]
+    binding.pry
+    erb :"/store/home"
+  end
 end
