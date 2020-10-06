@@ -51,10 +51,11 @@ class ApplicationController < Sinatra::Base
   end
 
   post '/updates/new' do
-    binding.pry
+    # binding.pry
     @update = Update.new(content: params[:content])
     @update.employee_id = session[:id]
-    binding.pry
-    erb :"/store/home"
+    @update.save
+    # binding.pry
+    redirect "/home"
   end
 end

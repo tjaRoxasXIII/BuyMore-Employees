@@ -7,7 +7,7 @@
 
 <h3>Have something to say? Post an update:</h3>
 <form method="POST" action="/updates/new">
-<textarea name="content" rows="2" cols="50"></textarea>
+<textarea name="content" rows="3" cols="36"></textarea>
 <input type="submit" value="Post">
 </form>
 
@@ -17,6 +17,9 @@
         <h4><%=post.employee.first_name%> <%=post.employee.last_name%>:</h4>
         <h5 style="background-color:lightblue; display: block"><%= post.content%></h5>
         <h6 style="background-color:lightblue; display: block"><%= post.created_at.strftime("%m-%d-%Y  %l:%M %p") %></h6>
+        <% if post.employee_id == session[:id]%>
+        <h6><a href="#">Edit</a></h6>
+        <%end%>
         <br>
     </div>
 <%end%>
