@@ -32,6 +32,11 @@ class EmployeeController < ApplicationController
         erb :"/employees/profile"
     end
 
+    post '/employees/:id/profile' do
+        @employee = Employee.find_by(id: params[:id])
+        @employee.photo = params[:img]
+        erb :"/employees/profile"
+    end
 
 
 end

@@ -1,1 +1,22 @@
 <h2><%= @employee.first_name%>'s Profile</h2>
+
+<% if @employee.photo == nil %>
+<img src="/images/Nerd_Herd_logo.png" alt="Default photo" style="border:5px solid black">
+<%else%>
+    <img src="<%=@employee.photo%>" alt="BuyMore Man" width="300" height="400">
+<%end%>
+
+<% if @employee.id == Helpers.current_employee(session).id %>
+<form method="POST" action="/employees/<%=@employee.id%>/profile">
+    <input type="file" id="img" name="img" accept="image/*">
+    <input type="submit">
+</form>
+<%end%>
+
+<h3>Full Name: <%= @employee.full_name %></h3>
+<h3>Position: <%= @employee.job_title %></h3>
+<h3>Birthday: <%= @employee.birthdate %></h3>
+<h3>Email: <%= @employee.email %></h3>
+
+
+      
