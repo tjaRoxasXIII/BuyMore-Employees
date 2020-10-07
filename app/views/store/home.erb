@@ -1,24 +1,30 @@
-<th><a style="float:right; padding:15px" href="#">Log Out</a></th>
+<th><a style="float:right; padding:15px" href="/logout">Log Out</a></th>
 <th><a style="float:right; padding:15px" href="/store/info">Store Info</a></th>
 <th><a style="float:right; padding:15px" href="#">Profile</a></th>
-<th><a style="float:right; padding:15px" href="#">Home</a></th>
+<th><a style="float:right; padding:15px" href="/home">Home</a></th>
 
 <h2><%= DateTime.now.strftime("%B %d, %Y") %></h2>
 
 <h3>Have something to say? Post an update:</h3>
-<form method="POST" action="/updates/new">
-<textarea name="content" rows="3" cols="36"></textarea>
-<input type="submit" value="Post">
+<div>
+    <form method="POST" action="/updates/new">
+    <textarea name="content" rows="3" cols="36"></textarea>
+    <input type="submit" value="Post" style="display:block">
+    <br>
+</div>
 </form>
 
 
 <% Update.all.reverse.each do |post|%>
     <div>
-        <h4><%=post.employee.first_name%> <%=post.employee.last_name%>:</h4>
+        <h4><%=post.employee%>:</h4>
         <h5 style="background-color:lightblue; display: block"><%= post.content%></h5>
         <h6 style="background-color:lightblue; display: block"><%= post.created_at.strftime("%m-%d-%Y  %l:%M %p") %></h6>
         <% if post.employee_id == session[:id]%>
-        <h6><a href="#">Edit</a></h6>
+            <h6>
+            <a href="/updates/<%=post.id%>/edit">Edit</a>
+            <a href="/updates/<%=post.id%>/delete">Delete</a>
+            </h6>
         <%end%>
         <br>
     </div>

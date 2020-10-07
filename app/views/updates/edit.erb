@@ -1,0 +1,12 @@
+<h2>Please submit your desired change for the following Update:</h2>
+<form method="POST" action="/updates/<%= @update.id %>" style="display:inline-block">
+ <input id="hidden" type="hidden" name="_method" value="patch">
+<textarea name="content" rows="4" cols="36"><%=@update.content%></textarea>
+ <input type="submit" value="Submit Changes">
+</form>
+
+<form method="GET" action="/home" style="display:inline-block">
+    <input type="submit" value="Cancel">
+</form>
+   
+   
