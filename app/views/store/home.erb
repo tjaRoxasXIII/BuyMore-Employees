@@ -17,7 +17,7 @@
 
 <% Update.all.reverse.each do |post|%>
     <div>
-        <h4><%=post.employee%>:</h4>
+        <h4><%=post.employee.full_name%>:</h4>
         <h5 style="background-color:lightblue; display: block"><%= post.content%></h5>
         <h6 style="background-color:lightblue; display: block"><%= post.created_at.strftime("%m-%d-%Y  %l:%M %p") %></h6>
         <% if post.employee_id == session[:id]%>
