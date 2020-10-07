@@ -1,7 +1,6 @@
 class UpdateController < ApplicationController
 
     post '/updates/new' do
-        binding.pry
         @update = Update.new(content: params[:content])
         @update.employee_id = session[:id]
         @update.save
@@ -9,17 +8,16 @@ class UpdateController < ApplicationController
     end
     
     get '/updates/:id/edit' do
-        @update = Update.find_by(id: params[:id])
-        if @update.employee_id == session[:id]
-          erb :"/updates/edit"
+        if Helpers.is_logged_in?(session) && @update.employee_id == session[:id]
+            @update = Update.find_by(id: params[:id])
+            erb :"/updates/edit"
         else
-          redirect '/home'
+            redirect '/home'
         end
         
     end
     
     patch '/updates/:id' do
-        binding.pry
         @update = Update.find_by(id: params[:id])
         @update.content = params[:content]
         @update.save
@@ -27,9 +25,13 @@ class UpdateController < ApplicationController
     end
     
     get '/updates/:id/delete' do
-        @update = Update.find_by(id: params[:id])
-        @update.delete
-        redirect '/home'
+        if Helpers.is_logged_in?(session) && @update.employee_id == session[:id]
+            @update = Update.find_by(id: params[:id])
+            @update.delete
+            redirect '/home'
+        else
+            redirect '/'
+        end
     end
     
 end

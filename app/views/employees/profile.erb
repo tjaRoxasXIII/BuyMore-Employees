@@ -3,7 +3,7 @@
 <% if @employee.photo == nil %>
 <img src="/images/Nerd_Herd_logo.png" alt="Default photo" style="border:5px solid black">
 <%else%>
-    <img src="<%=@employee.photo%>" alt="BuyMore Man" width="300" height="400">
+    <img src="<%= @employee.photo %>" alt="Profile Photo">
 <%end%>
 
 <% if @employee.id == Helpers.current_employee(session).id %>
@@ -17,6 +17,10 @@
 <h3>Position: <%= @employee.job_title %></h3>
 <h3>Birthday: <%= @employee.birthdate %></h3>
 <h3>Email: <%= @employee.email %></h3>
-
-
-      
+<br>
+<% if @employee.id == Helpers.current_employee(session).id %>
+<form method="POST" action="/employees/<%=@employee.id%>/delete">
+    <input id="hidden" type="hidden" name="_method" value="DELETE">
+    <input type="submit" value="Delete Account">
+</form>
+<%end%>

@@ -30,15 +30,35 @@ class ApplicationController < Sinatra::Base
   end
 
   get '/home' do
-    erb :"store/home"
+    if Helpers.is_logged_in?(session)
+      erb :"store/home"
+    else
+      redirect '/'
+    end
   end
 
   get '/store/info' do 
-    erb :"store/info"
+    if Helpers.is_logged_in?(session)
+      erb :"store/info"
+    else  
+      redirect '/'
+    end
   end
 
   get '/logout' do
     session.clear
     redirect '/'
   end
+
+  delete '/employees/:id/delete' do
+    if Helpers.is_logged_in?(session)
+      @employee = Employee.find_by(id: params[:id])
+      session.clear
+      @employee.delete
+      redirect '/'
+    else
+      redirect '/'
+    end
+  end
+
 end

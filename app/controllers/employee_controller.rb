@@ -28,15 +28,19 @@ class EmployeeController < ApplicationController
     end
 
     get '/employees/:id/profile' do
-        @employee = Employee.find_by(id: params[:id])
-        erb :"/employees/profile"
+        if Helpers.is_logged_in?(session)
+            @employee = Employee.find_by(id: params[:id])
+            erb :"/employees/profile"
+        else
+            redirect '/'
+        end
     end
 
     post '/employees/:id/profile' do
         @employee = Employee.find_by(id: params[:id])
         @employee.photo = params[:img]
+        @employee.save
         erb :"/employees/profile"
     end
-
 
 end
