@@ -43,4 +43,42 @@ class EmployeeController < ApplicationController
         erb :"/employees/profile"
     end
 
+    get '/employees/:id/profile/edit' do
+        if Helpers.is_logged_in?(session)
+            @employee = Employee.find_by(id: params[:id])
+            erb :"/employees/edit"
+        else
+            redirect '/'
+        end
+    end
+
+    patch '/employees/:id/profile/edit' do
+        @employee = Employee.find_by(id: params[:id])
+        @employee.email = params[:email]
+        @employee.password = params[:password]
+        @employee.save
+        erb :"/employees/profile"
+    end
+
+    get '/employees/:id/delete' do
+        if Helpers.is_logged_in?(session)
+            @employee = Employee.find_by(id: params[:id])
+            erb :"/employees/delete"
+        else
+            redirect '/'
+        end
+
+    end
+
+    delete '/employees/:id/delete' do
+        if Helpers.is_logged_in?(session)
+          @employee = Employee.find_by(id: params[:id])
+          session.clear
+          @employee.delete
+          redirect '/'
+        else
+          redirect '/'
+        end
+    end
+    
 end

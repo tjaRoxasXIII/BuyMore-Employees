@@ -8,9 +8,13 @@ class UpdateController < ApplicationController
     end
     
     get '/updates/:id/edit' do
-        if Helpers.is_logged_in?(session) && @update.employee_id == session[:id]
+        if Helpers.is_logged_in?(session)
             @update = Update.find_by(id: params[:id])
-            erb :"/updates/edit"
+            if @update.employee_id == session[:id]
+                erb :"/updates/edit"
+            else
+                redirect '/home'
+            end
         else
             redirect '/home'
         end
@@ -25,8 +29,8 @@ class UpdateController < ApplicationController
     end
     
     get '/updates/:id/delete' do
+        @update = Update.find_by(id: params[:id])
         if Helpers.is_logged_in?(session) && @update.employee_id == session[:id]
-            @update = Update.find_by(id: params[:id])
             @update.delete
             redirect '/home'
         else

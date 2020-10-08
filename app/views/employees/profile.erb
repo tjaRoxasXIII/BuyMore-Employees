@@ -19,8 +19,11 @@
 <h3>Email: <%= @employee.email %></h3>
 <br>
 <% if @employee.id == Helpers.current_employee(session).id %>
-<form method="POST" action="/employees/<%=@employee.id%>/delete">
-    <input id="hidden" type="hidden" name="_method" value="DELETE">
+<form method="GET" action="/employees/<%=@employee.id%>/profile/edit">
+    <input type="submit" value="Edit">
+</form>
+<br>
+<form method="GET" action="/employees/<%=@employee.id%>/delete">
     <input type="submit" value="Delete Account">
 </form>
 <%end%>

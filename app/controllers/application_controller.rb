@@ -50,15 +50,4 @@ class ApplicationController < Sinatra::Base
     redirect '/'
   end
 
-  delete '/employees/:id/delete' do
-    if Helpers.is_logged_in?(session)
-      @employee = Employee.find_by(id: params[:id])
-      session.clear
-      @employee.delete
-      redirect '/'
-    else
-      redirect '/'
-    end
-  end
-
 end

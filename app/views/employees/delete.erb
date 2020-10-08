@@ -1,0 +1,12 @@
+<h2>This will Delete Everything!</h2>
+
+<h3>Are you sure you would like to delete your profile?</h3>
+
+<form method="GET" action="/employees/<%=@employee.id%>/profile">
+    <input type="submit" value="Go back">
+</form>
+
+<form method="POST" action="/employees/<%=@employee.id%>/delete">
+    <input id="hidden" type="hidden" name="_method" value="DELETE">
+    <input type="submit" value="Yes, Delete Account">
+</form>
