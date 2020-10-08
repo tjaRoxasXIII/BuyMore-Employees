@@ -74,7 +74,7 @@ class EmployeeController < ApplicationController
         if Helpers.is_logged_in?(session)
           @employee = Employee.find_by(id: params[:id])
           session.clear
-          @employee.delete
+          @employee.destroy
           redirect '/home'
         else
           redirect '/'

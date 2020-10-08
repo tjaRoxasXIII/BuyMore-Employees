@@ -5,7 +5,7 @@
 <form method="GET" action="/employees/<%=@employee.id%>/profile">
     <input type="submit" value="Go back">
 </form>
-
+<br>
 <form method="POST" action="/employees/<%=@employee.id%>/delete">
     <input id="hidden" type="hidden" name="_method" value="DELETE">
     <input type="submit" value="Yes, Delete Account">

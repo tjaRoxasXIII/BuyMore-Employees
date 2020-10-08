@@ -20,7 +20,7 @@
 
 <h3>Full Name: <%= @employee.full_name %></h3>
 <h3>Position: <%= @employee.job_title %></h3>
-<h3>Birthday: <%= @employee.birthdate %></h3>
+<h3>Birthday: <%= @employee.birthdate.strftime("%B %d, %Y") %></h3>
 <h3>Email: <%= @employee.email %></h3>
 <br>
 <% if @employee.id == Helpers.current_employee(session).id %>

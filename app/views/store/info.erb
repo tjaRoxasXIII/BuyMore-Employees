@@ -1,11 +1,16 @@
+<th><a style="float:right; padding:15px" href="/logout">Log Out</a></th>
+<th><a style="float:right; padding:15px" href="/store/info">Store Info</a></th>
+<th><a style="float:right; padding:15px" href="/employees/<%= Helpers.current_employee(session).id %>/profile">Profile</a></th>
+<th><a style="float:right; padding:15px" href="/home">Home</a></th>
+
 <% Store.all.each do |store|%>
     <h2><%= store.location%></h2>
     <h3> Address: <%= store.address%></h3>
     <br>
-    <h4>Store Team Members:</h4>
-        <% store.employees.each do |employee|%>
+    <h4><u>Store Team Members:</u></h4>
+        <% store.employees.sort_by {|name| name.full_name}.each do |employee|%>
         <ul>
-            <li><%= employee.full_name%></li>
+            <li><a href="/employees/<%=employee.id%>/profile"><%= employee.full_name%></a></li>
         </ul>
         <%end%>
         <br>
