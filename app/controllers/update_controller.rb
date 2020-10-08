@@ -8,13 +8,9 @@ class UpdateController < ApplicationController
     end
     
     get '/updates/:id/edit' do
-        if Helpers.is_logged_in?(session)
-            @update = Update.find_by(id: params[:id])
-            if @update.employee_id == session[:id]
-                erb :"/updates/edit"
-            else
-                redirect '/home'
-            end
+        @update = Update.find_by(id: params[:id])
+        if Helpers.is_logged_in?(session) && @update.employee_id == session[:id]
+            erb :"/updates/edit"
         else
             redirect '/home'
         end

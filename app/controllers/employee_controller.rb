@@ -44,8 +44,8 @@ class EmployeeController < ApplicationController
     end
 
     get '/employees/:id/profile/edit' do
-        if Helpers.is_logged_in?(session)
-            @employee = Employee.find_by(id: params[:id])
+        @employee = Employee.find_by(id: params[:id])
+        if Helpers.is_logged_in?(session) && @employee.id == session[:id]   
             erb :"/employees/edit"
         else
             redirect '/'
@@ -61,8 +61,8 @@ class EmployeeController < ApplicationController
     end
 
     get '/employees/:id/delete' do
-        if Helpers.is_logged_in?(session)
-            @employee = Employee.find_by(id: params[:id])
+        @employee = Employee.find_by(id: params[:id])
+        if Helpers.is_logged_in?(session) && @employee.id == session[:id]
             erb :"/employees/delete"
         else
             redirect '/'
@@ -75,7 +75,7 @@ class EmployeeController < ApplicationController
           @employee = Employee.find_by(id: params[:id])
           session.clear
           @employee.delete
-          redirect '/'
+          redirect '/home'
         else
           redirect '/'
         end
