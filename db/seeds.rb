@@ -11,3 +11,7 @@ Employee.create(first_name: "Michael", last_name: "Tucker", job_title: "Manager"
 Update.create(content: "Taking out a herder for a customer emgergency!", employee_id: 1)
 Update.create(content: "Hey Casey, don't forget I'll need your help over in the theater room this afternoon", employee_id: 1)
 Update.create(content: "Remember, today is the big CoD release so look alive people!", employee_id: 2)
+Update.create(content: "Finally about to close that sale on the Beastmaster Grill.", employee_id: 3)
+Update.create(content: "Don't forget to come out to see Jeffster in concert tonight!", employee_id: 4)
+Update.create(content: "Don't forget to come out to see Jeffster in concert tonight!", employee_id: 5)
+Update.create(content: "Jeff and Lester, how many times do I have to tell you that this chat tool ins't a platform for advertising your band?", employee_id: 6)
