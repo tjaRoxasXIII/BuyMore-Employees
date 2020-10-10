@@ -1,7 +1,4 @@
-<th><a style="float:right; padding:15px" href="/logout">Log Out</a></th>
-<th><a style="float:right; padding:15px" href="/store/info">Store Info</a></th>
-<th><a style="float:right; padding:15px" href="/employees/<%= Helpers.current_employee(session).id %>/profile">Profile</a></th>
-<th><a style="float:right; padding:15px" href="/home">Home</a></th>
+<%= erb :nav_bar %>
 
 <h2><%= @employee.first_name%>'s Profile</h2>
 
