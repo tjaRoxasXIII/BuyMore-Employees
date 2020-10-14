@@ -3,18 +3,18 @@
 <h2>Please provide the following details about yourself</h2>
 
 <form method="POST" action="/employees/new">
-<h4>First Name: <input type="text" name="first_name"></h4><br>
-<h4>Last Name: <input type="text" name="last_name"></h4><br>
+<h4>First Name: <input type="text" name="employee[first_name]"></h4><br>
+<h4>Last Name: <input type="text" name="employee[last_name]"></h4><br>
 <h4>Job Location: </h4><br>
     <h5><input type="radio" name=job_location value="Beverly Hills"><label for="Beverly Hills">Beverly Hills</label>
     <input type="radio" name=job_location value="Burbank"><label for="Burbank">Burbank</label></h5><br>
 <h4>Job Position: </h4><br>
-    <h5><input type="radio" name="job_title" value="Sales"><label for="Sales">Sales</label>
-    <input type="radio" name="job_title" value="Nerd Herd"><label for="Nerd Herd">Nerd Herd</label>
-    <input type="radio" name="job_title" value="Assistant Manager"><label for="Assistant Manager">Assistant Manager</label></h5><br>
-<h4>Email: <input type="text" name="email"></h4><br>
-<h4>Birthdate: <input type="date" name="birthdate"></h4><br>
-<h4>Password: <input type="password" name="password"></h4><br>
+    <h5><input type="radio" name="employee[job_title]" value="Sales"><label for="Sales">Sales</label>
+    <input type="radio" name="employee[job_title]" value="Nerd Herd"><label for="Nerd Herd">Nerd Herd</label>
+    <input type="radio" name="employee[job_title]" value="Assistant Manager"><label for="Assistant Manager">Assistant Manager</label></h5><br>
+<h4>Email: <input type="text" name="employee[email]"></h4><br>
+<h4>Birthdate: <input type="date" name="employee[birthdate]"></h4><br>
+<h4>Password: <input type="password" name="employee[password]"></h4><br>
 <input type="submit" value="Submit">
 </form>
 
